@@ -1,0 +1,165 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    display:flex;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    background-color: rgb(162, 152, 187);
+}
+
+ nav{
+    width: 100%;
+}
+#nav-bar{
+    width: auto;
+    height: 8vh;
+    background-color: crimson;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    overflow: hidden;
+}
+
+#nav-bar p{
+    padding: 30px;
+    color:linen;
+    font-weight: 800; 
+}
+
+#nav-bar input{
+    width:20%;
+    padding: 3px;
+    border-radius: 4px;
+    display: flex;
+    justify-content:center;    
+    align-items: center;
+    border: none;
+}
+
+ .date-container {
+     margin-top: 3px;
+    margin-left:-450px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height:15vh;
+    width:15vw;
+    background-color: rgba(141, 104, 104, 0.5);
+    border-radius: 10px;
+    align-items: center ;
+    color: salmon;
+}
+
+.date-container .time{
+    color: rgb(12, 49, 28);
+    font-size: 2rem;
+}
+
+.main-container
+{
+    display: flex;
+    flex-direction: column;
+    width: 55vw;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(12, 49, 28,0.2);
+    margin: 0 50px 0 50px;
+    /* margin-top:; */
+    padding: 50px 0px 50px 0px;
+}
+.main-container h2
+{
+    font-size: 40px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.main-container div
+{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.main-sc-input
+{
+    width: 35vw;
+    padding: 10px 20px;
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+.wt-btn 
+{
+    padding: 10px 20px;
+    margin: 10px;
+    margin-top: 15px;
+    background-color: transparent;
+    border: 2px solid rgb(226, 185, 193);
+    border-radius: 30px;
+}
+.fc-btn
+{
+    padding: 10px 20px;
+    margin: 10px;
+    margin-top: 15px;
+    background-color: transparent;
+    border: 2px solid rgb(236, 193, 202);
+    border-radius: 30px;
+}
+.weather-data
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    /* min-height: 50vh; */
+    align-items: center;
+    background-color:  rgba(255, 12, 12, 0.05);
+    margin:0% 50px 0% 50px;
+    /* padding: 15px 0px 15px 0px; */
+}
+
+.city-name{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(194, 66, 44);
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.weather-data .data-city{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50vw;
+    height:55vh;
+}
+
+.weather-data .data-city .city-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:20vw;
+    height:10vh;
+    background-color: rgba(255,255,255,0.1);
+    margin: 1px;
+}
+
+.weather-data .celfa{
+    background-color: rgb(44, 164, 194);
+    padding:5px;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+}
