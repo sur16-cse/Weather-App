@@ -17,7 +17,7 @@ var celtofahren;
 
 async function getdata(data) {
   const res = await fetch(
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
       data +
       "&appid=f190a0abeaeaaf5380c205502c29c38c"
   );
