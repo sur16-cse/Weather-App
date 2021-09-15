@@ -180,7 +180,8 @@ setInterval(() => {
 
  async function backgroundimage(data) {
   let randomImage = await getNewImage(data);
-      background.style.backgroundImage= `url(${randomImage})`;
+  background.style.backgroundImage= `linear-gradient(rgba(0,0,0,0.827),rgba(0,0,0,0.8)),url(${randomImage})`;
+  document.getElementById('nav-bar').style.backgroundColor=`rgb(220, 20, 60,0.1)`
  }
 
   async function getNewImage(data) {
