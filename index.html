@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css">
     <a href="https://icons8.com/icon/NVAtYk7nzMFv/sunrise"></a>
+    <script src="https://kit.fontawesome.com/62e002bcf4.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
@@ -30,15 +31,30 @@
     <div class="main-container">
         <h2>Search By Location</h2>
         <div>Write the location to get weather</div>
+        <div class="input-icons">
+        <i class="fas fa-map-marker-alt icon"></i>
         <input type="text" class="main-sc-input" placeholder="Search the City">
+        </div>
         <div>
             <button class="wt-btn">Weather</button>
             <button class="fc-btn">Forecast</button>
         </div>
-        </div>
+    </div>
        <div class="weather-data">
         
        </div>
+       <div id="forecast-data">
+           <div class="forecast"></div>
+           <div class="forecast"></div>
+           <div class="forecast"></div>
+           <div class="forecast"></div>
+           <div class="forecast"></div>
+       </div>
+       <footer>
+            <a href="https://sur16-cse.github.io/">Powered By © Surbhi</a></p>
+       </footer>
+       <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script src="app.js"></script>
+    
 </body>
 </html>

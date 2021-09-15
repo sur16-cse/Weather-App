@@ -4,13 +4,21 @@
     box-sizing: border-box;
 }
 
+.algolia-places
+{
+    width: auto;
+}
+
 body{
     display:flex;
     align-items: center;
     min-height: 100vh;
     width: 100%;
     flex-direction: column;
-    background-color: rgb(162, 152, 187);
+    background-color: rgb(162, 152, 187); 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
 }
 
  nav{
@@ -42,9 +50,31 @@ body{
     border: none;
 }
 
+#nav-bar button{
+    background-color: rgb(231, 223, 223,0.5);
+    padding:0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border: none;
+    color: rgb(56, 15, 56);
+    font-weight: 600;
+}
+#nav-bar button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: darksalmon;
+}
+
+#nav-bar a{
+    text-decoration: none;
+    color:rgb(73, 23, 73);
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
  .date-container {
      margin-top: 3px;
-    margin-left:-450px;
+    margin-left:-600px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -53,7 +83,9 @@ body{
     background-color: rgba(141, 104, 104, 0.5);
     border-radius: 10px;
     align-items: center ;
+    justify-content: center;
     color: salmon;
+    margin-bottom: 0.5rem;
 }
 
 .date-container .time{
@@ -66,7 +98,7 @@ body{
     display: flex;
     flex-direction: column;
     width: 55vw;
-    height: auto;
+    max-height: 40vh;
     justify-content: center;
     align-items: center;
     background-color:rgba(12, 49, 28,0.2);
@@ -76,9 +108,10 @@ body{
 }
 .main-container h2
 {
-    font-size: 40px;
+    font-size: 30px;
     margin-bottom: 5px;
     text-align: center;
+    color: darkslategray;
 }
 .main-container div
 {
@@ -93,6 +126,36 @@ body{
     border: 1px solid transparent;
     border-radius: 10px;
 }
+
+.ap-suggestion {
+    cursor: pointer;
+    height: 26px;
+    line-height: 8px;
+    padding: 18px;
+    overflow: hidden;
+}
+
+.ap-input-icon svg{
+    /* color:chartreuse */
+    fill: rgb(85, 92, 104);
+    display: none;
+}
+
+.input-icons i {
+    position: absolute;
+}
+
+.icon {
+    padding: 10px;
+    right: 450px;
+    z-index: 1;
+    color: darkgray;
+    }
+
+.icon:hover{
+color: dimgray;
+}
+
 .wt-btn 
 {
     padding: 10px 20px;
@@ -117,11 +180,12 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60vw;
+    width: 55vw;
     /* min-height: 50vh; */
-    align-items: center;
+    /* align-items: center; */
     background-color:  rgba(255, 12, 12, 0.05);
-    margin:0% 50px 0% 50px;
+     margin:0% 50px 0% 50px;
+    /* margin-top: 0%; */ 
     /* padding: 15px 0px 15px 0px; */
 }
 
@@ -163,3 +227,36 @@ body{
     border: none;
     border-radius: 4px;
 }
+
+#forecast-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: auto;
+    width: 100%;
+    background-color: grey;
+}
+footer {
+    display: block;
+    background-color: rgba(12, 122, 60,0.3);
+    border-top: 2px solid red;
+    height: 50px;  
+    margin-top: 20px; 
+    width: 100%;
+    bottom:0;
+    left:0;
+    position: absolute;
+  }
+
+footer a{
+    text-decoration: none;
+    color: #581818;
+    font-weight: 800;
+    display: flex;
+    padding-left: 1rem;
+    padding-top: 1.3rem;
+    font-size: 1.1rem;
+}
+
