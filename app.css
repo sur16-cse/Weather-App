@@ -19,6 +19,7 @@ body{
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
+    background-image: url("images/unnamed.jpg");
 }
 
  nav{
@@ -34,15 +35,22 @@ body{
     overflow: hidden;
 }
 
-#nav-bar p{
-    padding: 30px;
+#nav-bar .head{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nav-bar .head p{
+    /* padding: 30px; */
     color:linen;
-    font-weight: 800; 
+    font-weight: 1000;
+    font-size: 1.5rem; 
 }
 
 #nav-bar input{
     width:20%;
-    padding: 3px;
+    padding: 3.5px;
     border-radius: 4px;
     display: flex;
     justify-content:center;    
@@ -50,11 +58,15 @@ body{
     border: none;
 }
 
+#nav-bar input:focus{
+    outline: none;
+}
+
 #nav-bar button{
-    background-color: rgb(231, 223, 223,0.5);
-    padding:0.2rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    background-color: rgba(205, 226, 19, 0.5);
+    padding:0.3rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
     border: none;
     color: rgb(56, 15, 56);
     font-weight: 600;
@@ -89,7 +101,7 @@ body{
 }
 
 .date-container .time{
-    color: rgb(12, 49, 28);
+    color: rgb(163, 238, 196);
     font-size: 2rem;
 }
 
@@ -108,14 +120,14 @@ body{
 }
 .main-container h2
 {
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 5px;
     text-align: center;
-    color: darkslategray;
+    color: rgb(170, 235, 235);
 }
 .main-container div
 {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 5px;
 }
 .main-sc-input
@@ -154,6 +166,7 @@ body{
 
 .icon:hover{
 color: dimgray;
+cursor: pointer;
 }
 
 .wt-btn 
@@ -173,6 +186,14 @@ color: dimgray;
     background-color: transparent;
     border: 2px solid rgb(236, 193, 202);
     border-radius: 30px;
+}
+.wt-btn:hover{
+    background-color: rgb(182, 85, 49);
+    cursor: pointer;
+}
+.fc-btn:hover{
+    background-color: rgb(182, 85, 49);
+    cursor: pointer;
 }
 .weather-data
 {
@@ -221,6 +242,11 @@ color: dimgray;
     color: honeydew;
 }
 
+.weather-data .data-city .city-data:hover{
+    transform: scale(1.05);
+    background-color: rgb(235, 70, 11,0.1);
+}
+
 .weather-data .celfa{
     background-color: rgb(44, 164, 194);
     padding:5px;
@@ -229,16 +255,27 @@ color: dimgray;
     border-radius: 4px;
 }
 
-#forecast-data{
+/* #forecast-data{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
     min-height: auto;
-    width: 100%;
     background-color: grey;
-}
+    width: 50vw;
+    height:55vh;
+} */
+
+/* #forecast-data .forecast{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: olivedrab;
+    width:20vw;
+    height:10vh;
+} */
+
 footer {
     display: block;
     background-color: rgba(12, 122, 60,0.3);
@@ -253,7 +290,7 @@ footer {
 
 footer a{
     text-decoration: none;
-    color: #581818;
+    color: #f3bdbd;
     font-weight: 800;
     display: flex;
     padding-left: 1rem;
