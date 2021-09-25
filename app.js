@@ -7,6 +7,7 @@ var dataBody = document.getElementsByClassName("weather-data")[0];
 var locationfinder= document.querySelector(".icon");
 var background=document.getElementsByTagName('body')[0];
 var forecast=document.getElementsByClassName('fc-btn')[0];
+var nav=document.getElementById('nav-bar')
 var forecastdata=document.getElementById('forecast-data');
 var timeEle=document.getElementById('time');
 var dateEle=document.getElementById('date');
@@ -111,6 +112,7 @@ butup.addEventListener("click", (e) => {
     backgroundimage(data);
     search.value = " ";
     mainBody.style.display = "none";
+    forecastdata.style.display="none";
     dataBody.style.display = "flex";
   }
 });
@@ -122,6 +124,7 @@ wtBtn.addEventListener("click", (e) => {
     backgroundimage(data);
     dSearch.value = " ";
     mainBody.style.display = "none";
+    forecastdata.style.display="none";
     dataBody.style.display = "flex";
   }
 });
@@ -145,6 +148,7 @@ wtBtn.addEventListener("click", (e) => {
 })();
 
  locationfinder.addEventListener('click',(e)=>{
+   mainBody.style.display="none"
 navigator.geolocation.getCurrentPosition((position)=>{
   var lat  = position.coords.latitude;
   var lon = position.coords.longitude;
@@ -152,12 +156,70 @@ navigator.geolocation.getCurrentPosition((position)=>{
   .then(res=>res.json())
   .then(val => {
     console.log(val);
-    //getweather(val);
+    getcurrent(val);
   })
-   .catch(error=>
-     alert("Geolocation is not working"))
+.catch(error=>
+ alert("Geolocation is not working"))
 })
 }) 
+
+function getcurrent(val){
+  const currentcard=
+  `<div class="data-city">
+    <div class="city-data" id = "temp" style="color: rgb(26, 44, 44)"><img src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/20/000000/external-temperature-nature-wanicon-lineal-color-wanicon.png"/>  Temp:
+     ${
+      (val.current.temp - 273).toFixed(2) 
+    } ${toggle?Celsius:Fahrenheit} </div>
+    <div class="city-data" id = "feel" style="color: rgb(26, 44, 44);"><img src="https://img.icons8.com/doodle/20/000000/climate-change.png"/>  Feel:
+     ${
+      (val.current.feels_like - 273).toFixed(2)
+      
+    } ${toggle?Celsius:Fahrenheit}</div>
+    <div class="city-data" style="color: rgb(26, 44, 44);"><img src="http://openweathermap.org/img/wn/${
+      val.current.weather[0].icon
+    }.png">  ${val.current.weather[0].main}</div>
+    <div class="city-data" style="color: rgb(26, 44, 44);"><img src="http://openweathermap.org/img/wn/${
+      val.current.weather[0].icon
+    }.png">  Conditions: ${val.current.weather[0].description}</get></div>
+    <div class="city-data" style="color: rgb(26, 44, 44);"><img src="https://img.icons8.com/glyph-neue/20/4a90e2/atmospheric-pressure.png"/>  Pressure: ${
+      val.current.pressure
+    } hpa</div>
+    <div class="city-data" style="color: rgb(217, 230, 230);"><img src="https://img.icons8.com/color/20/000000/humidity.png"/>  Humidity: ${
+      val.current.humidity
+    } %</div>
+    <div class="city-data" style="color: rgb(217, 230, 230);"><img src="https://img.icons8.com/clouds/20/000000/wind.png"/>  Wind Speed: ${
+      val.current.wind_speed
+    } km/hr</div>
+    <div class="city-data" style="color: rgb(217, 230, 230);"><img src="https://img.icons8.com/external-justicon-lineal-color-justicon/20/000000/external-cloud-weather-justicon-lineal-color-justicon-1.png"/>  Cloudiness: ${
+      val.current.clouds
+    }%</div>
+    <div class="city-data" style="color: rgb(217, 230, 230);"><img src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/20/000000/external-sunrise-weather-prettycons-lineal-color-prettycons.png"/>  Sunrise: ${format(
+      val.current.sunrise
+    )}</div>
+    <div class="city-data" style="color: rgb(217, 230, 230);"><img src="https://img.icons8.com/external-prettycons-flat-prettycons/20/000000/external-sunset-weather-prettycons-flat-prettycons.png"/>  Sunset: ${format(
+      val.current.sunset
+    )}</div>
+    </div>
+    <button id="celsius" class="celfa">Celsius/Fahrenheit</button>`
+    dataBody.innerHTML=currentcard;
+    celtofahren=document.getElementById("celsius");
+    //
+  celtofahren.addEventListener("click", (e)=>{
+    console.log("hello");
+    if(toggle){
+        val.current.temp = (val.current.temp*(9/5))+32;
+        val.current.feels_like = (val.current.feels_like*(9/5))+32;
+        console.log(val.current.temp)
+        toggle=false;
+    }
+    else{
+      val.current.temp=(val.current.temp - 32)*5/9;
+      val.current.feels_like=(val.current.feels_like - 32)*5/9;
+        toggle=true;
+    }
+    getcurrent(val);
+})
+}
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

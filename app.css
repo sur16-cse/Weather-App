@@ -28,7 +28,7 @@ body{
 #nav-bar{
     width: auto;
     height: 8vh;
-    background-color: crimson;
+    background-color: rgb(220, 20, 60,0.8);
     display: flex;
     justify-content:space-evenly;
     align-items: center;
@@ -63,13 +63,15 @@ body{
 }
 
 #nav-bar button{
-    background-color: rgba(205, 226, 19, 0.5);
-    padding:0.3rem;
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
+    background-color: rgb(231, 235, 201);
+    padding:0.5rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
     border: none;
-    color: rgb(56, 15, 56);
-    font-weight: 600;
+    color: rgb(73, 11, 73);
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: sans-serif;
 }
 #nav-bar button:hover{
     transform: scale(1.1);
@@ -80,8 +82,13 @@ body{
 #nav-bar a{
     text-decoration: none;
     color:rgb(224, 160, 224);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 800;
+}
+
+#nav-bar a:hover{
+    cursor: pointer;
+    color: rgba(233, 219, 214, 0.5);
 }
 
  .date-container {
@@ -120,15 +127,19 @@ body{
 }
 .main-container h2
 {
-    font-size: 40px;
+    font-size: 45px;
     margin-bottom: 5px;
     text-align: center;
-    color: rgb(170, 235, 235);
+    color: rgb(49, 41, 49);
+}
+#locate{
+    color: rgb(255, 52, 52);
 }
 .main-container div
 {
-    font-size: 22px;
+    font-size: 1.5rem;
     margin-bottom: 5px;
+    color: rgb(4, 42, 54);
 }
 .main-sc-input
 {
@@ -214,12 +225,15 @@ cursor: pointer;
     display:flex;
     justify-content: center;
     align-items: center;
-    color: rgb(194, 66, 44);
+    color:greenyellow;
     margin-bottom: 5px;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bolder;
 }
-
+.city-data:hover{
+    cursor: pointer;
+    color: goldenrod;
+}
 .weather-data .data-city{
     display: flex;
     justify-content: center;
@@ -245,36 +259,58 @@ cursor: pointer;
 .weather-data .data-city .city-data:hover{
     transform: scale(1.05);
     background-color: rgb(235, 70, 11,0.1);
+    cursor: pointer;
 }
 
 .weather-data .celfa{
-    background-color: rgb(44, 164, 194);
-    padding:5px;
-    font-weight: 700;
+    background-color: rgb(6, 198, 246);
+    padding:8px;
+    font-weight: 800;
     border: none;
     border-radius: 4px;
 }
+.weather-data .celfa:hover{
+    cursor: pointer;
+    background-color: rgb(211, 103, 103);
+    border: darkslateblue 1px solid;
+}
 
-/* #forecast-data{
+ #forecast-data{
+    margin-top: 0%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     flex-wrap: wrap;
     min-height: auto;
-    background-color: grey;
-    width: 50vw;
-    height:55vh;
-} */
+    /* background-color: grey; */
+    width: 95vw;
+    min-height: auto;
+    display: none;
+} 
 
-/* #forecast-data .forecast{
-    display:flex;
+ #forecast-data>div{
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: olivedrab;
-    width:20vw;
-    height:10vh;
-} */
+    font-weight: bolder;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 45vw;
+    height:45vh;
+    background-color: rgb(243, 163, 14,0.2);
+    margin: 3px;
+} 
+
+.forecast{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:10vw;
+    height:5vh;
+    background-color: rgba(255,255,255);
+    margin: 1px;
+    color: honeydew;
+}
 
 footer {
     display: block;
