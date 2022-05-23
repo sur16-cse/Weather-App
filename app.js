@@ -9,6 +9,7 @@ var background=document.getElementsByTagName('body')[0];
 var forecast=document.getElementsByClassName('fc-btn')[0];
 var nav=document.getElementById('nav-bar')
 var forecastdata=document.getElementById('forecast-data');
+var forecastHtml=document.getElementsByClassName('forecast')
 var timeEle=document.getElementById('time');
 var dateEle=document.getElementById('date');
 var submit = true;
@@ -262,8 +263,8 @@ setInterval(() => {
 forecast.addEventListener('click',(e)=>{
     data = dSearch.value;
 
-    if (data) {
-      //getforecastdata(data);
+    if (data) {  
+      getforecastdata(data);
       backgroundimage(data);
       dSearch.value = " ";
       mainBody.style.display = "none";
@@ -273,6 +274,182 @@ forecast.addEventListener('click',(e)=>{
     }
 })
 
-// async function getforecastdata(data) {
-//   const res=await fetch('')
-// }
+ async function getforecastdata(data) {
+   const res=await fetch("https://api.openweathermap.org/data/2.5/forecast?q="+
+   data+
+   "&appid=f190a0abeaeaaf5380c205502c29c38c");
+   const get = await res.json();
+   console.log(get);
+   if (get.message === "city not found") {
+     console.log("Hello");
+     alert("this location not found");
+   } else {
+    //console.log(get.city.name)
+     getforecast(get);
+   }
+}
+
+const getforecast=(get)=>{
+const heading=`<div class="city-name">${get.city.name}</div>`
+document.getElementById('heading').innerHTML=heading
+  var citydatacard = `<div class="city-date">${reverse(get.list[0].dt_txt.slice(0,10))}</div>
+    <div class="data-city">
+    <div class="city-data" id = "temp"><img src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/20/000000/external-temperature-nature-wanicon-lineal-color-wanicon.png"/>  Temp:
+     ${(get.list[0].main.temp - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit} </div>
+    <div class="city-data" id = "feel"><img src="https://img.icons8.com/doodle/20/000000/climate-change.png"/>  Feel:
+     ${(get.list[0].main.feels_like - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${get.list[0].weather[0].icon}.png">  ${get.list[0].weather[0].main}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${
+      get.list[0].weather[0].icon
+    }.png">  Conditions: ${get.list[0].weather[0].description}</get></div>
+    <div class="city-data"><img src="https://img.icons8.com/glyph-neue/20/4a90e2/atmospheric-pressure.png"/>  Pressure: ${
+      get.list[0].main.pressure
+    } hpa</div>
+    <div class="city-data"><img src="https://img.icons8.com/color/20/000000/humidity.png"/>  Humidity: ${
+      get.list[0].main.humidity
+    } %</div>
+    <div class="city-data"><img src="https://img.icons8.com/clouds/20/000000/wind.png"/>  Wind Speed: ${
+      get.list[0].wind.speed
+    } km/hr</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-justicon-lineal-color-justicon/20/000000/external-cloud-weather-justicon-lineal-color-justicon-1.png"/>  Cloudiness: ${
+      get.list[0].clouds.all
+    }%</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/20/000000/external-sunrise-weather-prettycons-lineal-color-prettycons.png"/>  Sunrise: ${format(
+      get.city.sunrise
+    )}</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-flat-prettycons/20/000000/external-sunset-weather-prettycons-flat-prettycons.png"/>  Sunset: ${format(
+      get.city.sunset
+    )}</div>
+    </div>
+    <button id="celsius" class="celfa">Celsius/Fahrenheit</button>`
+    forecastHtml[0].innerHTML=citydatacard
+
+   citydatacard=` <div class="city-date">${reverse(get.list[8].dt_txt.slice(0,10))}</div>
+   <div class="data-city">
+    <div class="city-data" id = "temp"><img src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/20/000000/external-temperature-nature-wanicon-lineal-color-wanicon.png"/>  Temp:
+     ${(get.list[8].main.temp - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit} </div>
+    <div class="city-data" id = "feel"><img src="https://img.icons8.com/doodle/20/000000/climate-change.png"/>  Feel:
+     ${(get.list[8].main.feels_like - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${get.list[0].weather[0].icon}.png">  ${get.list[0].weather[0].main}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${
+      get.list[8].weather[0].icon
+    }.png">  Conditions: ${get.list[0].weather[0].description}</get></div>
+    <div class="city-data"><img src="https://img.icons8.com/glyph-neue/20/4a90e2/atmospheric-pressure.png"/>  Pressure: ${
+      get.list[8].main.pressure
+    } hpa</div>
+    <div class="city-data"><img src="https://img.icons8.com/color/20/000000/humidity.png"/>  Humidity: ${
+      get.list[8].main.humidity
+    } %</div>
+    <div class="city-data"><img src="https://img.icons8.com/clouds/20/000000/wind.png"/>  Wind Speed: ${
+      get.list[8].wind.speed
+    } km/hr</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-justicon-lineal-color-justicon/20/000000/external-cloud-weather-justicon-lineal-color-justicon-1.png"/>  Cloudiness: ${
+      get.list[8].clouds.all
+    }%</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/20/000000/external-sunrise-weather-prettycons-lineal-color-prettycons.png"/>  Sunrise: ${format(
+      get.city.sunrise
+    )}</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-flat-prettycons/20/000000/external-sunset-weather-prettycons-flat-prettycons.png"/>  Sunset: ${format(
+      get.city.sunset
+    )}</div>
+    </div>`
+    forecastHtml[1].innerHTML = citydatacard;
+
+    citydatacard=`<div class="city-date">${reverse(get.list[16].dt_txt.slice(0,10))}</div>
+    <div class="data-city">
+    <div class="city-data" id = "temp"><img src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/20/000000/external-temperature-nature-wanicon-lineal-color-wanicon.png"/>  Temp:
+     ${(get.list[16].main.temp - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit} </div>
+    <div class="city-data" id = "feel"><img src="https://img.icons8.com/doodle/20/000000/climate-change.png"/>  Feel:
+     ${(get.list[16].main.feels_like - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${get.list[0].weather[0].icon}.png">  ${get.list[0].weather[0].main}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${
+      get.list[16].weather[0].icon
+    }.png">  Conditions: ${get.list[0].weather[0].description}</get></div>
+    <div class="city-data"><img src="https://img.icons8.com/glyph-neue/20/4a90e2/atmospheric-pressure.png"/>  Pressure: ${
+      get.list[16].main.pressure
+    } hpa</div>
+    <div class="city-data"><img src="https://img.icons8.com/color/20/000000/humidity.png"/>  Humidity: ${
+      get.list[16].main.humidity
+    } %</div>
+    <div class="city-data"><img src="https://img.icons8.com/clouds/20/000000/wind.png"/>  Wind Speed: ${
+      get.list[16].wind.speed
+    } km/hr</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-justicon-lineal-color-justicon/20/000000/external-cloud-weather-justicon-lineal-color-justicon-1.png"/>  Cloudiness: ${
+      get.list[16].clouds.all
+    }%</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/20/000000/external-sunrise-weather-prettycons-lineal-color-prettycons.png"/>  Sunrise: ${format(
+      get.city.sunrise
+    )}</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-flat-prettycons/20/000000/external-sunset-weather-prettycons-flat-prettycons.png"/>  Sunset: ${format(
+      get.city.sunset
+    )}</div>
+    </div>`
+    forecastHtml[2].innerHTML = citydatacard
+
+    citydatacard=` <div class="city-date">${reverse(get.list[24].dt_txt.slice(0,10))}</div>
+    <div class="data-city">
+    <div class="city-data" id = "temp"><img src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/20/000000/external-temperature-nature-wanicon-lineal-color-wanicon.png"/>  Temp:
+     ${(get.list[24].main.temp - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit} </div>
+    <div class="city-data" id = "feel"><img src="https://img.icons8.com/doodle/20/000000/climate-change.png"/>  Feel:
+     ${(get.list[24].main.feels_like - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${get.list[0].weather[0].icon}.png">  ${get.list[0].weather[0].main}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${
+      get.list[24].weather[0].icon
+    }.png">  Conditions: ${get.list[0].weather[0].description}</get></div>
+    <div class="city-data"><img src="https://img.icons8.com/glyph-neue/20/4a90e2/atmospheric-pressure.png"/>  Pressure: ${
+      get.list[24].main.pressure
+    } hpa</div>
+    <div class="city-data"><img src="https://img.icons8.com/color/20/000000/humidity.png"/>  Humidity: ${
+      get.list[24].main.humidity
+    } %</div>
+    <div class="city-data"><img src="https://img.icons8.com/clouds/20/000000/wind.png"/>  Wind Speed: ${
+      get.list[24].wind.speed
+    } km/hr</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-justicon-lineal-color-justicon/20/000000/external-cloud-weather-justicon-lineal-color-justicon-1.png"/>  Cloudiness: ${
+      get.list[24].clouds.all
+    }%</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/20/000000/external-sunrise-weather-prettycons-lineal-color-prettycons.png"/>  Sunrise: ${format(
+      get.city.sunrise
+    )}</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-flat-prettycons/20/000000/external-sunset-weather-prettycons-flat-prettycons.png"/>  Sunset: ${format(
+      get.city.sunset
+    )}</div>
+    </div>`
+    forecastHtml[3].innerHTML = citydatacard
+
+    citydatacard=` <div class="city-date">${reverse(get.list[32].dt_txt.slice(0,10))}</div>
+    <div class="data-city">
+    <div class="city-data" id = "temp"><img src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/20/000000/external-temperature-nature-wanicon-lineal-color-wanicon.png"/>  Temp:
+     ${(get.list[32].main.temp - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit} </div>
+    <div class="city-data" id = "feel"><img src="https://img.icons8.com/doodle/20/000000/climate-change.png"/>  Feel:
+     ${(get.list[32].main.feels_like - 273).toFixed(2)} ${toggle?Celsius:Fahrenheit}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${get.list[0].weather[0].icon}.png">  ${get.list[0].weather[0].main}</div>
+    <div class="city-data"><img src="http://openweathermap.org/img/wn/${
+      get.list[32].weather[0].icon
+    }.png">  Conditions: ${get.list[0].weather[0].description}</get></div>
+    <div class="city-data"><img src="https://img.icons8.com/glyph-neue/20/4a90e2/atmospheric-pressure.png"/>  Pressure: ${
+      get.list[32].main.pressure
+    } hpa</div>
+    <div class="city-data"><img src="https://img.icons8.com/color/20/000000/humidity.png"/>  Humidity: ${
+      get.list[32].main.humidity
+    } %</div>
+    <div class="city-data"><img src="https://img.icons8.com/clouds/20/000000/wind.png"/>  Wind Speed: ${
+      get.list[32].wind.speed
+    } km/hr</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-justicon-lineal-color-justicon/20/000000/external-cloud-weather-justicon-lineal-color-justicon-1.png"/>  Cloudiness: ${
+      get.list[32].clouds.all
+    }%</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/20/000000/external-sunrise-weather-prettycons-lineal-color-prettycons.png"/>  Sunrise: ${format(
+      get.city.sunrise
+    )}</div>
+    <div class="city-data"><img src="https://img.icons8.com/external-prettycons-flat-prettycons/20/000000/external-sunset-weather-prettycons-flat-prettycons.png"/>  Sunset: ${format(
+      get.city.sunset
+    )}</div>
+    </div>`
+    forecastHtml[4].innerHTML = citydatacard;
+
+    function reverse(b){
+       const a=new Date(b);
+       return a.getDate()+"-"+a.getMonth()+"-"+a.getFullYear();
+    }
+}

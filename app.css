@@ -6,6 +6,7 @@
 
 .algolia-places
 {
+    
     width: auto;
 }
 
@@ -103,12 +104,13 @@ body{
     border-radius: 10px;
     align-items: center ;
     justify-content: center;
-    color: salmon;
+    font-size: 1.5rem;
+    color: rgb(174, 199, 63);
     margin-bottom: 0.5rem;
 }
 
 .date-container .time{
-    color: rgb(163, 238, 196);
+    color: rgb(36, 246, 127);
     font-size: 2rem;
 }
 
@@ -152,10 +154,11 @@ body{
 
 .ap-suggestion {
     cursor: pointer;
-    height: 26px;
+    height: 24px;
     line-height: 8px;
-    padding: 18px;
     overflow: hidden;
+    padding-top: 12px;
+    padding-bottom: 20px;
 }
 
 .ap-input-icon svg{
@@ -296,20 +299,53 @@ cursor: pointer;
     flex-direction: column;
     flex-wrap: wrap;
     width: 45vw;
-    height:45vh;
+    height:65vh;
     background-color: rgb(243, 163, 14,0.2);
     margin: 3px;
 } 
 
-.forecast{
+#forecast-data .data-city{
     display: flex;
     justify-content: center;
     align-items: center;
-    width:10vw;
-    height:5vh;
-    background-color: rgba(255,255,255);
+    font-weight: bolder;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 40vw;
+    height:55vh;
+}
+
+#forecast-data .data-city .city-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:20vw;
+    height:10vh;
+    background-color: rgba(255, 255, 255, 0.1);
     margin: 1px;
-    color: honeydew;
+    color: rgb(165, 199, 165);
+}
+
+#forecast-data .data-city .city-data:hover{
+    transform: scale(1.05);
+    background-color: rgb(235, 70, 11,0.1);
+    cursor: pointer;
+}
+
+#forecast-container .city-name{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(6, 43, 253);
+    margin-bottom: 5px;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.city-date{
+   color:#cf7f7f;
+   font-weight: bolder;
+   font-size: x-large;
 }
 
 footer {
