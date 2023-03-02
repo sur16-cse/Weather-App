@@ -321,6 +321,7 @@ document.getElementById('heading').innerHTML=heading
       get.city.sunset
     )}</div>
     </div>
+   <button id="celsius" class="celfa">Celsius/Fahrenheit</button>`
     forecastHtml[0].innerHTML=citydatacard
 
    citydatacard=` <div class="city-date">${reverse(get.list[8].dt_txt.slice(0,10))}</div>
